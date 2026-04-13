@@ -89,3 +89,17 @@ loadQuran();
 
 </body>
 </html>
+<!DOCTYPE html>
+‏<html>
+‏<body>
+
+‏<h1>تطبيق القرآن الكريم</h1>
+
+‏<ul>
+‏  <li>الفاتحة</li>
+‏  <li>البقرة</li>
+‏  <li>آل عمران</li>
+‏</ul>
+
+‏</body>
+‏</html>
