@@ -1,6 +1,4 @@
 # index.html
-# Quran-app
-Public
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -22,18 +20,8 @@ header{
   font-size:24px;
 }
 
-input{
-  width:90%;
-  padding:10px;
-  margin:10px auto;
-  display:block;
-  border-radius:8px;
-  border:1px solid.   #ccc;
-}
-
 .container{
   padding:10px;
-  padding-bottom:60px;
 }
 
 .surah{
@@ -48,18 +36,12 @@ input{
   display:none;
   margin-top:10px;
   line-height:1.8;
-  color:#333;
 }
-
 footer{
-  position:fixed;
-  bottom:0;
-  width:100%;
-  background:#2e7d32;
-  color:white;
   text-align:center;
   padding:10px;
-  font-size:16px;
+  background:#2e7d32;
+  color:white;
 }
 </style>
 </head>
@@ -68,33 +50,24 @@ footer{
 
 <header>🌙 نور القرآن الكريم</header>
 
-<input type="text" id="search" placeholder="ابحث عن السورة...">
-
 <div id="app" class="container"></div>
 
 <footer>✨ رنيم العنزي</footer>
 
 <script>
-let allSurahs = [];
-
 async function loadQuran(){
   let res = await fetch("https://api.alquran.cloud/v1/quran/ar.alafasy");
   let data = await res.json();
 
-  allSurahs = data.data.surahs;
-  displaySurahs(allSurahs);
-}
-
-function displaySurahs(surahs){
+  let surahs = data.data.surahs;
   let app = document.getElementById("app");
-  app.innerHTML = "";
 
   surahs.forEach(surah=>{
     let div = document.createElement("div");
     div.className = "surah";
 
-    let ayahsHTML = surah.ayahs.map(a => 
-      `${a.numberInSurah}. ${a.text}<br>`
+    let ayahsHTML = surah.ayahs.map(a =>
+      a.numberInSurah + ". " + a.text + "<br>"
     ).join("");
 
     div.innerHTML = `
@@ -111,16 +84,8 @@ function displaySurahs(surahs){
   });
 }
 
-document.getElementById("search").oninput = function(){
-  let value = this.value.trim();
-  let filtered = allSurahs.filter(s => 
-    s.name.includes(value)
-  );
-  displaySurahs(filtered);
-};
-
 loadQuran();
-</ :script>
+</script>
 
 </body>
-</html>.  
+</html>
